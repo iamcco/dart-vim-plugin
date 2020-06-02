@@ -31,5 +31,10 @@ function! DartIndent()
     let indentTo = indent(v:lnum - 1) + &shiftwidth
   endif
 
+  " Indent after opening (
+  if previousLine =~# '\v\(\s*$'
+    let indentTo = indent(v:lnum - 1) + &shiftwidth
+  endif
+
   return indentTo
 endfunction
